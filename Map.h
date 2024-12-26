@@ -1,44 +1,44 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 #include<cstdlib>
 #include "Cls_and_Print.h"
 const int randnum(const int& l, const int& r)
-//Éú³ÉÒ»¸ö½éÓÚl£¬rµÄËæ»úÊı
+//ç”Ÿæˆä¸€ä¸ªä»‹äºlï¼Œrçš„éšæœºæ•°
 {
 	return l + rand() % (r - l + 1);
 }
 const int randnum(const int& l, const int& r, const int& odevity)
-//Éú³ÉÒ»¸ö½éÓÚl£¬rµÄËæ»úÊı
-//odevity=1£¬Éú³ÉÆæÊı£»odevity=2£¬Éú³ÉÅ¼Êı
+//ç”Ÿæˆä¸€ä¸ªä»‹äºlï¼Œrçš„éšæœºæ•°
+//odevity=1ï¼Œç”Ÿæˆå¥‡æ•°ï¼›odevity=2ï¼Œç”Ÿæˆå¶æ•°
 {
 	if (odevity == 1)
-		return l - l % 2 + 1 + rand() % (r - l + 1 + l % 2 + r % 2 - 2) / 2 * 2;//Èç¹ûl»òrÊÇÅ¼Êı£¬ËõĞ¡·¶Î§
+		return l - l % 2 + 1 + rand() % (r - l + 1 + l % 2 + r % 2 - 2) / 2 * 2;//å¦‚æœlæˆ–ræ˜¯å¶æ•°ï¼Œç¼©å°èŒƒå›´
 	if (odevity == 2)
-		return l + l % 2 + rand() % (r - l + 1 - l % 2 - r % 2) / 2 * 2;//Èç¹ûl»òrÊÇÆæÊı£¬ËõĞ¡·¶Î§
+		return l + l % 2 + rand() % (r - l + 1 - l % 2 - r % 2) / 2 * 2;//å¦‚æœlæˆ–ræ˜¯å¥‡æ•°ï¼Œç¼©å°èŒƒå›´
 	/*
 	if (odevity == 1)
-		return l - l % 2 + 1 + rand() % (r - l + 1) / 2 * 2;//Èç¹ûl»òrÊÇÅ¼Êı£¬ËõĞ¡·¶Î§
+		return l - l % 2 + 1 + rand() % (r - l + 1) / 2 * 2;//å¦‚æœlæˆ–ræ˜¯å¶æ•°ï¼Œç¼©å°èŒƒå›´
 	if (odevity == 2)
-		return l + l % 2 + rand() % (r - l + 1) / 2 * 2;//Èç¹ûl»òrÊÇÆæÊı£¬ËõĞ¡·¶Î§
+		return l + l % 2 + rand() % (r - l + 1) / 2 * 2;//å¦‚æœlæˆ–ræ˜¯å¥‡æ•°ï¼Œç¼©å°èŒƒå›´
 	*/
 }
 class Map
 {
 private:
-	int row, col;//rowÊÇĞĞ£¬col=columnÊÇÁĞ
+	int row, col;//rowæ˜¯è¡Œï¼Œcol=columnæ˜¯åˆ—
 	int** map;
-	int x, y;//x,y±íÊ¾ÀÏÊóµÄ×ø±ê
+	int x, y;//x,yè¡¨ç¤ºè€é¼ çš„åæ ‡
 public:
 
 	void clear(void)
-		//½«ÃÔ¹¬³õÊ¼»¯
+		//å°†è¿·å®«åˆå§‹åŒ–
 	{
 		for (int i = 1; i <= row; ++i)
 			for (int j = 1; j <= col; ++j)
 			{
-				if (i == row - 1 and j == col - 1) map[i][j] = 5;//5ÊÇÖÕµã
-				else if (i == 1 or j == 1 or i == row or j == col) map[i][j] = 2;//2ÊÇµØÍ¼±ß½çµÄÇ½±Ú
-				else map[i][j] = 0;//0ÊÇ¿ÕµØ
+				if (i == row - 1 and j == col - 1) map[i][j] = 5;//5æ˜¯ç»ˆç‚¹
+				else if (i == 1 or j == 1 or i == row or j == col) map[i][j] = 2;//2æ˜¯åœ°å›¾è¾¹ç•Œçš„å¢™å£
+				else map[i][j] = 0;//0æ˜¯ç©ºåœ°
 			}
 	}
 
@@ -51,13 +51,13 @@ public:
 		{
 			if (cx == x and i == y) continue;
 			if (cx >= row - 2 and i >= col - 2) continue;
-			map[cx][i] = 1;//ÉèÖÃÕâÒ»ĞĞµÄ×óÓÒ·½ÏòµÄÇ½±Ú
+			map[cx][i] = 1;//è®¾ç½®è¿™ä¸€è¡Œçš„å·¦å³æ–¹å‘çš„å¢™å£
 		}
 		for (int j = sx + 1; j <= ex - 1; ++j)
 		{
 			if (j == x and cy == y) continue;
 			if (j >= row - 2 and cy >= col - 2) continue;
-			map[j][cy] = 1;//ÉèÖÃÕâÒ»ÁĞµÄÊúÖ±·½ÏòµÄÇ½±Ú
+			map[j][cy] = 1;//è®¾ç½®è¿™ä¸€åˆ—çš„ç«–ç›´æ–¹å‘çš„å¢™å£
 		}
 
 		int plug_direction = randnum(1, 5);
@@ -75,27 +75,32 @@ public:
 		if (plug_direction != 3) map[randnum(sx + 1, cx - 1, 1)][cy] = 0;
 		if (plug_direction != 4) map[randnum(cx + 1, ex - 1, 1)][cy] = 0;
 
-		create_maze(sx, sy, cx, cy);//×óÉÏ
-		create_maze(cx, sy, ex, cy);//ÓÒÉÏ
-		create_maze(sx, cy, cx, ey);//×óÏÂ
-		create_maze(cx, cy, ex, ey);//ÓÒÏÂ 
+		create_maze(sx, sy, cx, cy);//å·¦ä¸Š
+		create_maze(cx, sy, ex, cy);//å³ä¸Š
+		create_maze(sx, cy, cx, ey);//å·¦ä¸‹
+		create_maze(cx, cy, ex, ey);//å³ä¸‹ 
 
 		return;
 	}
 
 	bool reachable(const int& delta_x, const int& delta_y)
-		//x·½ÏòÒÆ¶¯delta_x¸ñ£¬y·½ÏòÒÆ¶¯delta_y¸ñÊÇ·ñÊÇ¿ÉĞĞµÄ
-		//Èç¹û¿ÉĞĞ£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse
+		//xæ–¹å‘ç§»åŠ¨delta_xæ ¼ï¼Œyæ–¹å‘ç§»åŠ¨delta_yæ ¼æ˜¯å¦æ˜¯å¯è¡Œçš„
+		//å¦‚æœå¯è¡Œï¼Œè¿”å›trueï¼Œå¦åˆ™è¿”å›false
 	{
 		return map[x + delta_x][y + delta_y] == 0;
 	}
 
+	bool win(void) const
+	{
+		return (x >= row - 2 and y >= col - 1) or (x >= row - 1 and y >= col - 2);
+	}
+
 	const char& symbol(const int& _x, const int& _y) const
-		//·µ»ØÃÔ¹¬¶ÔÓ¦×ø±êµÄchar·ûºÅ
+		//è¿”å›è¿·å®«å¯¹åº”åæ ‡çš„charç¬¦å·
 	{
 		if (_x <= 0 or _x >= row + 1 or _y <= 0 or _y >= col + 1)	return ' ';
 		if (_x == x and _y == y)	return 'M';
-		if (map[_x][_y] == 1 or map[_x][_y] == 2) return '#';
+		if (map[_x][_y] == 1 or map[_x][_y] == 2) return 'X';
 		if (map[_x][_y] == 5) return 'E';
 		if (map[_x][_y] == 0) return ' ';
 		return '!';
@@ -116,19 +121,22 @@ public:
 	}
 
 	void print(void) const
-		//´òÓ¡Õû¸öÃÔ¹¬
+		//æ‰“å°æ•´ä¸ªè¿·å®«
 	{
 		for (int i = 1; i <= row; ++i)
 		{
 			for (int j = 1; j <= col; ++j)
+			{
+				color(i, j);
 				std::cout << symbol(i, j);
+			}
 			std::cout << '\n';
 		}
 		return;
 	}
 
 	void move(const int& delta_x, const int& delta_y)
-		//x·½ÏòÒÆ¶¯delta_x¸ñ£¬y·½ÏòÒÆ¶¯delta_y¸ñ
+		//xæ–¹å‘ç§»åŠ¨delta_xæ ¼ï¼Œyæ–¹å‘ç§»åŠ¨delta_yæ ¼
 	{
 		x += delta_x;
 		y += delta_y;
@@ -136,7 +144,7 @@ public:
 	}
 
 	void print_with_fog(const int& length, const int& width) const
-		//´òÓ¡´øÃÔÎíµÄÃÔ¹¬£¬Ò²¾ÍÊÇÖ»´òÓ¡ÒÔ×ÔÉíÎªÖĞĞÄµÄĞĞ·½ÏòÉÏÏÂÑÓÉìlength¸ñ£¬ÁĞ·½Ïò×óÓÒÑÓÉìwidth¸ñµÄ³¤¶È¡£
+		//æ‰“å°å¸¦è¿·é›¾çš„è¿·å®«ï¼Œä¹Ÿå°±æ˜¯åªæ‰“å°ä»¥è‡ªèº«ä¸ºä¸­å¿ƒçš„è¡Œæ–¹å‘ä¸Šä¸‹å»¶ä¼¸lengthæ ¼ï¼Œåˆ—æ–¹å‘å·¦å³å»¶ä¼¸widthæ ¼çš„é•¿åº¦ã€‚
 	{
 		for (int i = x - length; i <= x + length; ++i)
 		{

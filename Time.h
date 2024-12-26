@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 #include<chrono>
 
@@ -9,67 +9,67 @@ long long reference_timer, game_timer;
 /*
 long long CD_timer;
 
-void set_CD_timer(void)//½«reference_timerÉèÖÃÎªµ±Ç°ºÁÃëÊı
+void set_CD_timer(void)//å°†reference_timerè®¾ç½®ä¸ºå½“å‰æ¯«ç§’æ•°
 {
-	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//»ñÈ¡µ±Ç°ÏµÍ³Ê±¼äcurrent_time_points
-	const std::chrono::milliseconds current_time_ms = std::chrono::duration_cast<std::chrono::milliseconds>(current_time_points.time_since_epoch());//½«current_time_pointsµÄµ¥Î»×ª»»ÎªºÁÃë
+	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//è·å–å½“å‰ç³»ç»Ÿæ—¶é—´current_time_points
+	const std::chrono::milliseconds current_time_ms = std::chrono::duration_cast<std::chrono::milliseconds>(current_time_points.time_since_epoch());//å°†current_time_pointsçš„å•ä½è½¬æ¢ä¸ºæ¯«ç§’
 	CD_timer = current_time_ms.count();
 	return;
 }
 
-bool CD(long long CD_limit_ms)//¼ì²éÊÇ·ñÒÑ¾­ÀäÈ´£¬Ò²¾ÍÊÇcurrent_time_ms-CD_timerµÄÖµÊÇ·ñ´óÓÚCD_limit_ms
+bool CD(long long CD_limit_ms)//æ£€æŸ¥æ˜¯å¦å·²ç»å†·å´ï¼Œä¹Ÿå°±æ˜¯current_time_ms-CD_timerçš„å€¼æ˜¯å¦å¤§äºCD_limit_ms
 {
-	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//»ñÈ¡µ±Ç°ÏµÍ³Ê±¼äcurrent_time_points
-	const std::chrono::milliseconds current_time_ms = std::chrono::duration_cast<std::chrono::milliseconds>(current_time_points.time_since_epoch());//½«current_time_pointsµÄµ¥Î»×ª»»ÎªºÁÃë
+	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//è·å–å½“å‰ç³»ç»Ÿæ—¶é—´current_time_points
+	const std::chrono::milliseconds current_time_ms = std::chrono::duration_cast<std::chrono::milliseconds>(current_time_points.time_since_epoch());//å°†current_time_pointsçš„å•ä½è½¬æ¢ä¸ºæ¯«ç§’
 	return current_time_ms.count() - CD_timer > CD_limit_ms;
 }
 */
-void set_reference_timer(void)//½«reference_timerÉèÖÃÎªµ±Ç°ÃëÊı
+void set_reference_timer(void)//å°†reference_timerè®¾ç½®ä¸ºå½“å‰ç§’æ•°
 {
-	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//»ñÈ¡µ±Ç°ÏµÍ³Ê±¼äcurrent_time_points
-	const std::chrono::seconds current_time_s = std::chrono::duration_cast<std::chrono::seconds>(current_time_points.time_since_epoch());//½«current_time_pointsµÄµ¥Î»×ª»»ÎªÃë
+	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//è·å–å½“å‰ç³»ç»Ÿæ—¶é—´current_time_points
+	const std::chrono::seconds current_time_s = std::chrono::duration_cast<std::chrono::seconds>(current_time_points.time_since_epoch());//å°†current_time_pointsçš„å•ä½è½¬æ¢ä¸ºç§’
 	reference_timer = current_time_s.count();
 	return;
 }
 
-bool should_renew_game_timer(void)//¼ì²éÊÇ·ñÓ¦¸Ã¸üĞÂ¼ÆÊ±Æ÷£¬Ò²¾ÍÊÇµ±Ç°Ê±¼äÓëgame_timerµÄ²îÖµÊÇ·ñÒÑ¾­´óÓÚµÈÓÚ1
+bool should_renew_game_timer(void)//æ£€æŸ¥æ˜¯å¦åº”è¯¥æ›´æ–°è®¡æ—¶å™¨ï¼Œä¹Ÿå°±æ˜¯å½“å‰æ—¶é—´ä¸game_timerçš„å·®å€¼æ˜¯å¦å·²ç»å¤§äºç­‰äº1
 {
-	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//»ñÈ¡µ±Ç°ÏµÍ³Ê±¼äcurrent_time_points
-	const std::chrono::seconds current_time_s = std::chrono::duration_cast<std::chrono::seconds>(current_time_points.time_since_epoch());//½«current_time_pointsµÄµ¥Î»×ª»»ÎªÃë
+	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//è·å–å½“å‰ç³»ç»Ÿæ—¶é—´current_time_points
+	const std::chrono::seconds current_time_s = std::chrono::duration_cast<std::chrono::seconds>(current_time_points.time_since_epoch());//å°†current_time_pointsçš„å•ä½è½¬æ¢ä¸ºç§’
 	return game_timer != current_time_s.count();
 }
 
-void set_game_timer(void)//½«game_timerÉèÖÃÎªµ±Ç°ÃëÊı
+void set_game_timer(void)//å°†game_timerè®¾ç½®ä¸ºå½“å‰ç§’æ•°
 {
-	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//»ñÈ¡µ±Ç°ÏµÍ³Ê±¼äcurrent_time_points
-	const std::chrono::seconds current_time_s = std::chrono::duration_cast<std::chrono::seconds>(current_time_points.time_since_epoch());//½«current_time_pointsµÄµ¥Î»×ª»»ÎªÃë
+	const std::chrono::system_clock::time_point current_time_points = std::chrono::system_clock::now();//è·å–å½“å‰ç³»ç»Ÿæ—¶é—´current_time_points
+	const std::chrono::seconds current_time_s = std::chrono::duration_cast<std::chrono::seconds>(current_time_points.time_since_epoch());//å°†current_time_pointsçš„å•ä½è½¬æ¢ä¸ºç§’
 	game_timer = current_time_s.count();
 	return;
 }
 
-long long get_timer(void)//»ñÈ¡¼ÆÊ±Æ÷¼ÇÂ¼µÄÊ±¼ä£¬Ò²¾ÍÊÇgame_timer-reference_timerµÄÖµ
+long long get_timer(void)//è·å–è®¡æ—¶å™¨è®°å½•çš„æ—¶é—´ï¼Œä¹Ÿå°±æ˜¯game_timer-reference_timerçš„å€¼
 {
 	return game_timer - reference_timer;
 }
 
-void print_timer(void)//´òÓ¡¼ÆÊ±Æ÷¼ÇÂ¼µÄÊ±¼ä£¬Ò²¾ÍÊÇgame_timer-reference_timerµÄÖµ
+void print_timer(void)//æ‰“å°è®¡æ—¶å™¨è®°å½•çš„æ—¶é—´ï¼Œä¹Ÿå°±æ˜¯game_timer-reference_timerçš„å€¼
 {
 	std::cout << game_timer - reference_timer;
 	return;
 }
 
 /*
-void mtime(std::chrono::system_clock::time_point& startTime, int count=0) {     //starttimeÎªÉÏÒ»´Î²Ù×÷ºóµÄtemp´¢´æµÄÊ±¼ä
-	seconds starttime_seconds_since_epoch = duration_cast<seconds>(startTime.time_since_epoch()); //starttime×ª³ÉÃë
+void mtime(std::chrono::system_clock::time_point& startTime, int count=0) {     //starttimeä¸ºä¸Šä¸€æ¬¡æ“ä½œåçš„tempå‚¨å­˜çš„æ—¶é—´
+	seconds starttime_seconds_since_epoch = duration_cast<seconds>(startTime.time_since_epoch()); //starttimeè½¬æˆç§’
 
-	auto now = system_clock::now();                                                //¶¨Òå²¢»ñÈ¡ÏµÍ³Ê±¼änow
-	seconds seconds_since_epoch = duration_cast<seconds>(now.time_since_epoch());  //now×ª»¯³ÉÃë
+	auto now = system_clock::now();                                                //å®šä¹‰å¹¶è·å–ç³»ç»Ÿæ—¶é—´now
+	seconds seconds_since_epoch = duration_cast<seconds>(now.time_since_epoch());  //nowè½¬åŒ–æˆç§’
 
-	if (starttime_seconds_since_epoch.count() != seconds_since_epoch.count()) {      //ÅĞ¶ÏÊÇ·ñĞèÒª´òÓ¡Ê±¼ä
-		count += seconds_since_epoch.count() - starttime_seconds_since_epoch.count();  //countÊ±¼ä¼ÆËã
+	if (starttime_seconds_since_epoch.count() != seconds_since_epoch.count()) {      //åˆ¤æ–­æ˜¯å¦éœ€è¦æ‰“å°æ—¶é—´
+		count += seconds_since_epoch.count() - starttime_seconds_since_epoch.count();  //countæ—¶é—´è®¡ç®—
 		startTime = now;
-		//system("cls"); //ÇåÆÁ
-		cout << "ÓÎÏ·ÒÑ¾­¿ªÊ¼" << count << "Ãë" << endl;//ÖØĞÂ´òÓ¡È«ÆÁ
+		//system("cls"); //æ¸…å±
+		cout << "æ¸¸æˆå·²ç»å¼€å§‹" << count << "ç§’" << endl;//é‡æ–°æ‰“å°å…¨å±
 
 	}
 }

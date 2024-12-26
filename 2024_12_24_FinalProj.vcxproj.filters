@@ -32,5 +32,8 @@
     <ClInclude Include="Cls_and_Print.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Play_Game.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

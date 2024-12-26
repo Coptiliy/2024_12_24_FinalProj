@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include<Windows.h>
 void cursor_goto_0_0(void)
 {
