@@ -1,7 +1,5 @@
-﻿#include<iostream>
-#include "Time.h"
-#include "Cls_and_Print.h"
-#include "Play_Game.h"
+﻿#include "main.h"
+
 int main()
 {
 	std::ios::sync_with_stdio(false);
@@ -14,6 +12,8 @@ int main()
 
 	while (true)
 	{
+		mciSendStringW(L"open ./music/1.mp3 alias bgm", NULL, 0, NULL);
+		mciSendStringW(L"play bgm", NULL, 0, NULL);
 		system("cls");
 		print_menu();
 		int opt;
@@ -45,6 +45,6 @@ int main()
 		}
 		if (opt == 2) break;
 	}
-
+	mciSendStringW(L"close bgm", NULL, 0, NULL);
 	return 0;
 }

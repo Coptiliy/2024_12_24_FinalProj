@@ -35,5 +35,8 @@
     <ClInclude Include="Play_Game.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
