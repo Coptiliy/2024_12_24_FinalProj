@@ -1,15 +1,16 @@
-ï»¿#pragma once
-#include<Windows.h>
+#pragma once
+#include "Key.h"
+
 bool key_down(const unsigned char& key_value)
 {
 	return (GetAsyncKeyState(key_value) & 0x8000);
 }
-bool key_short_press(const unsigned char& key_value)//æ˜¯å¦çŸ­æŒ‰äº†æŒ‰é”®
+bool key_short_press(const unsigned char& key_value)//ÊÇ·ñ¶Ì°´ÁË°´¼ü
 {
 	static bool key_state[256];
-	if (key_down(key_value) and !key_state[key_value])//ä¸Šä¸€æ¬¡æ²¡æœ‰æŒ‰ä¸‹ï¼Œä½†è¿™æ¬¡æŒ‰ä¸‹äº†
+	if (key_down(key_value) and !key_state[key_value])//ÉÏÒ»´ÎÃ»ÓĞ°´ÏÂ£¬µ«Õâ´Î°´ÏÂÁË
 	{
-		key_state[key_value]=true;
+		key_state[key_value] = true;
 		return true;
 	}
 	if (!key_down(key_value)) key_state[key_value] = false;
