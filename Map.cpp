@@ -106,7 +106,7 @@ const int randnum(const int& l, const int& r, const int& odevity)
 	{
 		if (_x == x and _y == y) set_color_and_background(12, 0);
 		else if (_x == row - 1 and _y == col - 1) set_color_and_background(3, 0);
-		else if (map[_x][_y] == 1) set_color_and_background(0, 15);
+		else if (map[_x][_y] == 1 or map[_x][_y]==2) set_color_and_background(0, 15);
 		else set_color_and_background(15, 0);
 		return;
 	}
