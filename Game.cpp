@@ -152,8 +152,8 @@ void print_menu(void)
 }
 void print_description(void)
 {
-	mciSendStringW(L"open ./music/2.mp3 alias bgm2", NULL, 0, NULL);
-	mciSendStringW(L"play bgm2", NULL, 0, NULL);
+	//mciSendStringW(L"open ./music/2.mp3 alias bgm2", NULL, 0, NULL);
+	//mciSendStringW(L"play bgm2", NULL, 0, NULL);
 	set_color_and_background(15, 0);
 	std::cout <<
 		"ÒýÑÔ£º\n"

@@ -24,7 +24,7 @@ int main()
 			print_description();
 			int difficuty;
 			std::cin >> difficuty;
-			mciSendStringW(L"close bgm2", NULL, 0, NULL);
+			//mciSendStringW(L"close bgm2", NULL, 0, NULL);
 			print_difficuty(difficuty);
 			mciSendStringW(L"open ./music/Kirov.mp3 alias Kirov", NULL, 0, NULL);
 			mciSendStringW(L"play Kirov", NULL, 0, NULL);
