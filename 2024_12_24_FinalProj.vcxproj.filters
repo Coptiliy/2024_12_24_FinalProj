@@ -18,9 +18,24 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Cls_and_Print.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Press_Key.h">
+    <ClInclude Include="Key.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Time.h">
@@ -32,7 +47,7 @@
     <ClInclude Include="Cls_and_Print.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Play_Game.h">
+    <ClInclude Include="Game.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="main.h">
