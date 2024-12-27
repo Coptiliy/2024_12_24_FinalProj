@@ -1,70 +1,75 @@
-ï»¿#include<iostream>
-#include<windows.h>
-#include "Time.h"
-#include "Press_Key.h"
-#include "Map.h"
-#include "Cls_and_Print.h"
+#include "Game.h"
+
 void print_game(const Map& map, const int& time_limit)
 {
 	map.print();
 	set_game_timer();
-	if (time_limit == -1) std::cout << "æ¸¸æˆå·²ç»å¼€å§‹äº†" << get_timer() << "ç§’\n";
+	if (time_limit == -1) std::cout << "ÓÎÏ·ÒÑ¾­¿ªÊ¼ÁË" << get_timer() << "Ãë\n";
 	else
 	{
-		std::cout << "å‰©ä½™æ—¶é—´:";
+		std::cout << "Ê£ÓàÊ±¼ä:";
 		if (time_limit - get_timer() <= 15) set_color_and_background(4, 0);
 		std::cout << time_limit - get_timer();
 		set_color_and_background(15, 0);
-		std::cout << "ç§’\n";
+		std::cout << "Ãë\n";
 	}
 }
 void print_game_with_fog(const Map& map, const int& time_limit, const int& length, const int& width)
 {
 	map.print_with_fog(length, width);
 	set_game_timer();
-	if (time_limit == -1) std::cout << "æ¸¸æˆå·²ç»å¼€å§‹äº†" << get_timer() << "ç§’\n";
+	if (time_limit == -1) std::cout << "ÓÎÏ·ÒÑ¾­¿ªÊ¼ÁË" << get_timer() << "Ãë\n";
 	else
 	{
-		std::cout << "å‰©ä½™æ—¶é—´:";
+		std::cout << "Ê£ÓàÊ±¼ä:";
 		if (time_limit - get_timer() <= 15) set_color_and_background(4, 0);
 		std::cout << time_limit - get_timer();
 		set_color_and_background(15, 0);
-		std::cout << "ç§’\n";
+		std::cout << "Ãë\n";
 	}
 }
 void print_game_over(const int& over_id)
-//id==1ï¼Œå› åˆ°è¾¾ç»ˆç‚¹è€Œå¯¼è‡´æ¸¸æˆç»“æŸï¼ˆèƒœåˆ©ï¼‰
-//id==2ï¼Œå› æ—¶é—´è€—å°½è€Œå¯¼è‡´æ¸¸æˆç»“æŸï¼ˆå¤±è´¥ï¼‰
+//id==1£¬Òòµ½´ïÖÕµã¶øµ¼ÖÂÓÎÏ·½áÊø£¨Ê¤Àû£©
+//id==2£¬ÒòÊ±¼äºÄ¾¡¶øµ¼ÖÂÓÎÏ·½áÊø£¨Ê§°Ü£©
 {
 	if (over_id == 1)
 	{
-		std::cout << "ä½ åˆ°è¾¾äº†ç»ˆç‚¹ï¼ä½ ";
+		std::cout << "Äãµ½´ïÁËÖÕµã£¡Äã";
 		set_color_and_background(2, 0);
-		std::cout << "èƒœåˆ©";
+		std::cout << "Ê¤Àû";
 		set_color_and_background(15, 0);
-		std::cout << "äº†ï¼\n";
+		std::cout << "ÁË£¡\n";
 	}
 	if (over_id == 2)
 	{
-		std::cout << "æ—¶é—´è€—å°½ï¼ä½ ";
+		std::cout << "Ê±¼äºÄ¾¡£¡Äã";
 		set_color_and_background(4, 0);
-		std::cout << "å¤±è´¥";
+		std::cout << "Ê§°Ü";
 		set_color_and_background(15, 0);
-		std::cout << "äº†ï¼\n";
+		std::cout << "ÁË£¡\n";
 	}
 }
 int play_game(const int& length, const int& width, const int& time_limit, const int& vision_length, const int& vision_width)
-//å¦‚æžœvision_length==0åˆ™æ‰“å°æ•´ä¸ªè¿·å®«
-//è¿”å›žå€¼ä¸º1ï¼Œå› åˆ°è¾¾ç»ˆç‚¹è€Œå¯¼è‡´æ¸¸æˆç»“æŸï¼ˆèƒœåˆ©ï¼‰
-//è¿”å›žå€¼ä¸º2ï¼Œå› æ—¶é—´è€—å°½è€Œå¯¼è‡´æ¸¸æˆç»“æŸï¼ˆå¤±è´¥ï¼‰
+//Èç¹ûvision_length==0Ôò´òÓ¡Õû¸öÃÔ¹¬
+//·µ»ØÖµÎª1£¬Òòµ½´ïÖÕµã¶øµ¼ÖÂÓÎÏ·½áÊø£¨Ê¤Àû£©
+//·µ»ØÖµÎª2£¬ÒòÊ±¼äºÄ¾¡¶øµ¼ÖÂÓÎÏ·½áÊø£¨Ê§°Ü£©
 {
 	system("cls");
 	set_reference_timer();
 
-	Map map(length, width);//è¿·å®«çš„è¡Œæ•°çš„åˆ—æ•°åº”è¯¥éƒ½æ˜¯å¥‡æ•°
+	Map map(length, width);//ÃÔ¹¬µÄÐÐÊýµÄÁÐÊýÓ¦¸Ã¶¼ÊÇÆæÊý
+
+	bool final_flag = 0;
 
 	while (true)
 	{
+		if (time_limit - get_timer() < 50 and final_flag == 0) {
+			mciSendStringW(L"close bgm1", NULL, 0, NULL);
+			mciSendStringW(L"open ./music/final.mp3 alias final", NULL, 0, NULL);
+			mciSendStringW(L"play final", NULL, 0, NULL);
+			final_flag = 1;
+		}
+
 		bool should_refresh = false;
 		should_refresh = should_refresh or should_renew_game_timer();
 		if (key_down(VK_LEFT))
@@ -132,7 +137,7 @@ void print_menu(void)
 		"**!**=()=**!**  Welcome Maze Game ~~~  my friend!   **!**=()=**!**\n"
 		"           QWQ                         qwq        \n"
 		"               The palace of our game            \n"
-		"                      æ¸¸æˆå¤§åŽ…                    \n"
+		"                      ÓÎÏ·´óÌü                    \n"
 		"\n"
 		"\n";
 	set_color_and_background(3, 0);
@@ -147,77 +152,79 @@ void print_menu(void)
 }
 void print_description(void)
 {
+	mciSendStringW(L"open ./music/2.mp3 alias bgm2", NULL, 0, NULL);
+	mciSendStringW(L"play bgm2", NULL, 0, NULL);
 	set_color_and_background(15, 0);
 	std::cout <<
-		"å¼•è¨€ï¼š\n"
+		"ÒýÑÔ£º\n"
 		"\n";
 	Sleep(2000);
 	std::cout <<
-		"åœ¨è¸ä¸Šå¾é€”çš„ç¬¬";
+		"ÔÚÌ¤ÉÏÕ÷Í¾µÄµÚ";
 	set_color_and_background(3, 0);
 	std::cout <<
-		"ä¸‰";
+		"Èý";
 	set_color_and_background(15, 0);
 	std::cout <<
-		"ä¸ªå¹´å¤´ï¼Œä½ ç»è¿‡äº†ä¸€åº§åŸŽæ± ã€‚\n"
+		"¸öÄêÍ·£¬Äã¾­¹ýÁËÒ»×ù³Ç³Ø¡£\n"
 		"\n";
 	Sleep(3000);
 	std::cout <<
-		"åŸŽé‡Œçš„äººä»¬ï¼Œ";
+		"³ÇÀïµÄÈËÃÇ£¬";
 	Sleep(1000);
 	set_color_and_background(6, 0);
 	std::cout <<
-		"ç¥žæƒ…æœ¨è®·ï¼ŒåƒçŽ©å¶ä¸€æ ·";
+		"ÉñÇéÄ¾Ú«£¬ÏñÍæÅ¼Ò»Ñù";
 	set_color_and_background(15, 0);
 	std::cout <<
-		"ã€‚\n"
+		"¡£\n"
 		"\n";
 	Sleep(3000);
 	std::cout <<
-		"è€Œä½ ï¼Œ";
+		"¶øÄã£¬";
 	Sleep(1000);
 	std::cout <<
-		"åœ¨æŽ¢é™©åŸŽå¸‚ä¹‹æ—¶ï¼Œ";
+		"ÔÚÌ½ÏÕ³ÇÊÐÖ®Ê±£¬";
 	Sleep(1000);
 	std::cout <<
-		"ä¸å¹¸é­é‡äº†ç½ªé­ç¥¸é¦–â€”â€”â€”â€”";
+		"²»ÐÒÔâÓöÁË×ï¿ý»öÊ×¡ª¡ª¡ª¡ª";
 	set_color_and_background(10, 0);
 	std::cout <<
-		"é»‘é­”æ³•å¸ˆ";
+		"ºÚÄ§·¨Ê¦";
 	set_color_and_background(15, 0);
 	std::cout <<
-		"â€”â€”â€”â€”çš„å·è¢­ã€‚\n"
+		"¡ª¡ª¡ª¡ªµÄÍµÏ®¡£\n"
 		"\n";
 	Sleep(3000);
 	std::cout <<
-		"ä½ è¢«å˜æˆäº†ä¸€åª";
+		"Äã±»±ä³ÉÁËÒ»Ö»";
 	set_color_and_background(4, 0);
 	std::cout <<
-		"è€é¼ ";
+		"ÀÏÊó";
 	set_color_and_background(15, 0);
 	std::cout <<
-		"ï¼Œ";
+		"£¬";
 	Sleep(2000);
 	std::cout <<
-		"å…³è¿›äº†å……æ»¡è¿·é›¾çš„åœ°ç‰¢é‡Œã€‚\n"
+		"¹Ø½øÁË³äÂúÃÔÎíµÄµØÀÎÀï¡£\n"
 		"\n";
 	Sleep(3000);
 	std::cout <<
-		"çŽ°åœ¨ï¼Œä½ åªæœ‰ååˆ†æœ‰é™çš„æ—¶é—´ï¼Œæ‰¾åˆ°å‡ºå£ï¼Œ\n"
+		"ÏÖÔÚ£¬ÄãÖ»ÓÐÊ®·ÖÓÐÏÞµÄÊ±¼ä£¬ÕÒµ½³ö¿Ú£¬\n"
 		"\n";
 	Sleep(1000);
 	std::cout <<
-		"é€ƒç¦».......\n"
+		"ÌÓÀë.......\n"
 		"\n";
 	set_color_and_background(4, 0);
 	Sleep(3000);
 	std::cout <<
-		"é€ƒç¦».......\n"
+		"ÌÓÀë.......\n"
 		"\n";
 	Sleep(3000);
 	set_color_and_background(15, 0);
 	std::cout <<
-		"è¯·é€‰æ‹©éš¾åº¦ç³»æ•°(1~4):\n";
+		"ÇëÑ¡ÔñÄÑ¶ÈÏµÊý(1~4):\n";
 }
 void print_difficuty(const int& difficulty)
 {
@@ -225,52 +232,52 @@ void print_difficuty(const int& difficulty)
 	{
 		set_color_and_background(15, 0);
 		std::cout <<
-			"éš¾åº¦ï¼š1\n"
-			"åœ°ç‰¢å¤§å°ï¼š25*115\n"
-			"æ—¶é—´é™åˆ¶ï¼š300ç§’\n"
-			"è§†é‡Žï¼šæ•´ä¸ªåœ°ç‰¢\n";
+			"ÄÑ¶È£º1\n"
+			"µØÀÎ´óÐ¡£º25*115\n"
+			"Ê±¼äÏÞÖÆ£º300Ãë\n"
+			"ÊÓÒ°£ºÕû¸öµØÀÎ\n";
 		set_color_and_background(3, 0);
 		std::cout <<
-			"å‡ºå£åœ¨åœ°ç‰¢çš„å³ä¸‹è§’\n";
+			"³ö¿ÚÔÚµØÀÎµÄÓÒÏÂ½Ç\n";
 		set_color_and_background(15, 0);
 	}
 	if (difficulty == 2)
 	{
 		set_color_and_background(15, 0);
 		std::cout <<
-			"éš¾åº¦ï¼š2\n"
-			"åœ°ç‰¢å¤§å°ï¼š45*135\n"
-			"æ—¶é—´é™åˆ¶ï¼š300ç§’\n"
-			"è§†é‡Žï¼š17*65\n";
+			"ÄÑ¶È£º2\n"
+			"µØÀÎ´óÐ¡£º45*135\n"
+			"Ê±¼äÏÞÖÆ£º300Ãë\n"
+			"ÊÓÒ°£º17*65\n";
 		set_color_and_background(3, 0);
 		std::cout <<
-			"å‡ºå£åœ¨åœ°ç‰¢çš„å³ä¸‹è§’\n";
+			"³ö¿ÚÔÚµØÀÎµÄÓÒÏÂ½Ç\n";
 		set_color_and_background(15, 0);
 	}
 	if (difficulty == 3)
 	{
 		set_color_and_background(15, 0);
 		std::cout <<
-			"éš¾åº¦ï¼š3\n"
-			"åœ°ç‰¢å¤§å°ï¼š75*255\n"
-			"æ—¶é—´é™åˆ¶ï¼š300ç§’\n"
-			"è§†é‡Žï¼š17*65\n";
+			"ÄÑ¶È£º3\n"
+			"µØÀÎ´óÐ¡£º75*255\n"
+			"Ê±¼äÏÞÖÆ£º300Ãë\n"
+			"ÊÓÒ°£º17*65\n";
 		set_color_and_background(3, 0);
 		std::cout <<
-			"å‡ºå£åœ¨åœ°ç‰¢çš„å³ä¸‹è§’\n";
+			"³ö¿ÚÔÚµØÀÎµÄÓÒÏÂ½Ç\n";
 		set_color_and_background(15, 0);
 	}
 	if (difficulty == 4)
 	{
 		set_color_and_background(15, 0);
 		std::cout <<
-			"éš¾åº¦ï¼š4\n"
-			"åœ°ç‰¢å¤§å°ï¼š165*325\n"
-			"æ—¶é—´é™åˆ¶ï¼š300ç§’\n"
-			"è§†é‡Žï¼š17*49\n";
+			"ÄÑ¶È£º4\n"
+			"µØÀÎ´óÐ¡£º165*325\n"
+			"Ê±¼äÏÞÖÆ£º300Ãë\n"
+			"ÊÓÒ°£º17*49\n";
 		set_color_and_background(3, 0);
 		std::cout <<
-			"å‡ºå£åœ¨åœ°ç‰¢çš„å³ä¸‹è§’\n";
+			"³ö¿ÚÔÚµØÀÎµÄÓÒÏÂ½Ç\n";
 		set_color_and_background(15, 0);
 	}
 }
