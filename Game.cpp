@@ -1,7 +1,7 @@
 #include "Game.h"
-
 void print_game(const Map& map, const int& time_limit)
 {
+	set_color_and_background(15,0);
 	map.print();
 	set_game_timer();
 	if (time_limit == -1) std::cout << "游戏已经开始了" << get_timer() << "秒\n";
