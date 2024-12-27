@@ -122,7 +122,7 @@ int play_game(const int& length, const int& width, const int& time_limit, const 
 				return 2;
 			}
 		}
-		Sleep(10);
+		Sleep(1);
 	}
 	return -655;
 }
