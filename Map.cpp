@@ -90,7 +90,7 @@ const int randnum(const int& l, const int& r, const int& odevity)
 	{
 		if (_x <= 0 or _x >= row + 1 or _y <= 0 or _y >= col + 1)	return ' ';
 		if (_x == x and _y == y)	return 'M';
-		if (map[_x][_y] == 1 or map[_x][_y] == 2) return 'X';
+		if (map[_x][_y] == 1 or map[_x][_y] == 2) return ' ';
 		if (map[_x][_y] == 5) return 'E';
 		if (map[_x][_y] == 0) return ' ';
 		return '!';
@@ -106,6 +106,7 @@ const int randnum(const int& l, const int& r, const int& odevity)
 	{
 		if (_x == x and _y == y) set_color_and_background(12, 0);
 		else if (_x == row - 1 and _y == col - 1) set_color_and_background(3, 0);
+		else if (map[_x][_y] == 1) set_color_and_background(0, 15);
 		else set_color_and_background(15, 0);
 		return;
 	}
