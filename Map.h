@@ -34,4 +34,5 @@ public:
 
 	Map(const int& _row, const int& _col);
 
+	~Map(void);
 };

@@ -16,6 +16,8 @@ int play_game(const int& length, const int& width, const int& time_limit, const 
 
 void print_menu(void);
 
-void print_description(void);
+void print_foreword(void);
 
-void print_difficuty(const int& difficulty);
+void print_difficuty_option(void);
+
+void print_difficuty_description(const int& difficulty);

@@ -161,3 +161,9 @@ Map::Map(const int& _row, const int& _col)
 	clear();
 	create_maze(1, 1, row, col);
 }
+
+Map::~Map(void)
+{
+	for (int i = 0; i <= row; ++i) delete[] map[i];
+	delete[] map;
+}

@@ -1,14 +1,20 @@
 #include "Game.h"
 void print_game(const Map& map, const int& time_limit)
 {
-	set_color_and_background(15,0);
+	set_color_and_background(15, 0);
 	map.print();
 	set_game_timer();
-	if (time_limit == -1) std::cout << "游戏已经开始了" << get_timer() << "秒\n";
+	if (time_limit == -1)
+	{
+		set_color_and_background(15, 0);
+		std::cout << "游戏已经开始了" << get_timer() << "秒\n";
+	}
 	else
 	{
+		set_color_and_background(15, 0);
 		std::cout << "剩余时间:";
-		if (time_limit - get_timer() <= 15) set_color_and_background(4, 0);
+		if (time_limit - get_timer() <= 50 and (time_limit - get_timer()) % 2 == 0) set_color_and_background(4, 0);
+		else set_color_and_background(15, 0);
 		std::cout << time_limit - get_timer();
 		set_color_and_background(15, 0);
 		std::cout << "秒\n";
@@ -16,13 +22,20 @@ void print_game(const Map& map, const int& time_limit)
 }
 void print_game_with_fog(const Map& map, const int& time_limit, const int& length, const int& width)
 {
+	set_color_and_background(15, 0);
 	map.print_with_fog(length, width);
 	set_game_timer();
-	if (time_limit == -1) std::cout << "游戏已经开始了" << get_timer() << "秒\n";
+	set_color_and_background(15, 0);
+	if (time_limit == -1)
+	{
+		set_color_and_background(15, 0);
+		std::cout << "游戏已经开始了" << get_timer() << "秒\n";
+	}
 	else
 	{
 		std::cout << "剩余时间:";
-		if (time_limit - get_timer() <= 15) set_color_and_background(4, 0);
+		if (time_limit - get_timer() <= 50 and (time_limit - get_timer()) % 2 == 0) set_color_and_background(4, 0);
+		else set_color_and_background(15, 0);
 		std::cout << time_limit - get_timer();
 		set_color_and_background(15, 0);
 		std::cout << "秒\n";
@@ -150,7 +163,7 @@ void print_menu(void)
 	std::cout <<
 		"============================================\n";
 }
-void print_description(void)
+void print_foreword(void)
 {
 	//mciSendStringW(L"open ./music/2.mp3 alias bgm2", NULL, 0, NULL);
 	//mciSendStringW(L"play bgm2", NULL, 0, NULL);
@@ -222,11 +235,14 @@ void print_description(void)
 		"逃离.......\n"
 		"\n";
 	Sleep(3000);
+}
+void print_difficuty_option(void)
+{
 	set_color_and_background(15, 0);
 	std::cout <<
 		"请选择难度系数(1~4):\n";
 }
-void print_difficuty(const int& difficulty)
+void print_difficuty_description(const int& difficulty)
 {
 	if (difficulty == 1)
 	{
@@ -234,7 +250,7 @@ void print_difficuty(const int& difficulty)
 		std::cout <<
 			"难度：1\n"
 			"地牢大小：25*115\n"
-			"时间限制：300秒\n"
+			"时间限制：90秒\n"
 			"视野：整个地牢\n";
 		set_color_and_background(3, 0);
 		std::cout <<
@@ -247,7 +263,7 @@ void print_difficuty(const int& difficulty)
 		std::cout <<
 			"难度：2\n"
 			"地牢大小：45*135\n"
-			"时间限制：300秒\n"
+			"时间限制：180秒\n"
 			"视野：17*65\n";
 		set_color_and_background(3, 0);
 		std::cout <<
@@ -260,7 +276,7 @@ void print_difficuty(const int& difficulty)
 		std::cout <<
 			"难度：3\n"
 			"地牢大小：75*255\n"
-			"时间限制：300秒\n"
+			"时间限制：240秒\n"
 			"视野：17*65\n";
 		set_color_and_background(3, 0);
 		std::cout <<
